@@ -188,6 +188,7 @@ if __name__ == "__main__":
 
             choice = input("Enter your choice: ")
             product = Product()
+            category_module = Category()
             if choice == "1":
                 name = input("Enter product name: ")
                 price = float(input("Enter product price: "))
@@ -242,8 +243,14 @@ if __name__ == "__main__":
 
             elif choice == "7":
                 category = input("Enter product category: ")
+                if category not in category_module.get_all_categories():
+                    print("\nCategory not found. Please try again.")
+                    continue
                 products = product.get_products_by_category(category)
-                print(f"\nProducts in category {category}:")
+                if not products:
+                    print(f"\nNo products found in category {category}.")
+                    continue
+                print(f"\nProducts in category {category}:\n")
                 for product in products:
                     print(f"ID: {product[0]}, Name: {product[1]}, Price: {product[2]}, Category: {product[3]}, Description: {product[4]}, Store ID: {product[5]}")
 
@@ -288,8 +295,9 @@ if __name__ == "__main__":
                 print(f"\nDeleted description: {product_id} successfully.")
 
             elif choice == "3":
+                desc = Product()
                 product_id = int(input("Enter product ID: "))
-                description = description.get_description_by_product_id(product_id)
+                description = desc.get_product_description_by_product_id(product_id)
                 if description:
                     print(f"\nDescription found: {description}")
                 else:

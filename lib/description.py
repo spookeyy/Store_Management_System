@@ -3,7 +3,7 @@ from lib.config import DATABASE, CURSOR
 
 class Description:
 
-# creating a new description
+# use description from product table
     @classmethod
     def add_description(cls, product_id, description):
         sql = "INSERT INTO description (product_id, description) VALUES (?, ?)"
@@ -22,7 +22,11 @@ class Description:
     def get_description_by_product_id(cls, product_id):
         sql = "SELECT * FROM description WHERE product_id = ?"
         CURSOR.execute(sql, (product_id,))
-        return CURSOR.fetchone()[0]
+        result = CURSOR.fetchone()
+        if result:
+            return result[0]
+        else:
+            return None
     
 # deleting description
     @classmethod

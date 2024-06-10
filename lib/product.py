@@ -48,6 +48,15 @@ class Product:
         CURSOR.execute(sql, (new_description, product_id))
         DATABASE.commit()
 
+    @classmethod
+    def get_product_description_by_product_id(cls, product_id):
+        sql = "SELECT description FROM product WHERE id = ?"
+        CURSOR.execute(sql, (product_id,))
+        result = CURSOR.fetchone()  
+        if result:
+            return result[0]
+        else:
+            return None
 # counting products
     @classmethod
     def count_products_in_store(cls, store_id):
