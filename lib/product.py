@@ -10,6 +10,9 @@ class Product:
         sql = "INSERT INTO product (name, price, category, description, store_id) VALUES (?, ?, ?, ?, ?)"
         CURSOR.execute(sql, (name, price, category, description, store_id))
         DATABASE.commit()
+        product_id = CURSOR.lastrowid
+        CURSOR.execute("SELECT * FROM product WHERE id = ?", (product_id,))
+        return CURSOR.fetchone()
 
 # updating an existing product
     @classmethod
