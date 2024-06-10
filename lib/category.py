@@ -7,7 +7,7 @@ class Category:
 # creating a new category
     @classmethod
     def create_a_category(cls, name, store_id):
-        sql = "INSERT INTO category (name, store_id) VALUES (?, ?,)"
+        sql = "INSERT INTO category (name, store_id) VALUES (?, ?)"
         CURSOR.execute(sql, (name, store_id))
         DATABASE.commit()
 

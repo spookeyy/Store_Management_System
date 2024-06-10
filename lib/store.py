@@ -35,4 +35,7 @@ class Store:
     @classmethod
     def get_all_stores(cls):
         CURSOR.execute("SELECT * FROM store")
-        return CURSOR.fetchall()
+        stores = CURSOR.fetchall()
+        for store in stores:
+            print(store)
+        return stores
