@@ -275,26 +275,34 @@ if __name__ == "__main__":
             print("|=====================================|")
             print("|===========DESCRIPTION MENU==========|")
             print("|           PID: Product ID           |")
-            print("|        1. Update Description by PID |")
-            print("|        2. Delete Description by PID |")
-            print("|        3. Get Description by PID    |")
-            print("|        4. Main Menu                 |")
+            print("|        1. Add Description by PID    |")
+            print("|        2. Update Description by PID |")
+            print("|        3. Delete Description by PID |")
+            print("|        4. Get Description by PID    |")
+            print("|        5. Main Menu                 |")
             print("|=====================================|")
 
             choice = input("Enter your choice: ")
-            description = Description()
+            description_module = Description()
+
             if choice == "1":
                 product_id = int(input("Enter product ID: "))
-                new_description = input("Enter new product description: ")
-                description.update_description(product_id, new_description)
-                print(f"\nUpdated description: {product_id} ({new_description}) successfully.")
-
+                description = input("Enter product description: ")
+                description_module.add_description(product_id, description)
+                print(f"\nAdded description: {product_id} ({description}) successfully.")
+                
             elif choice == "2":
                 product_id = int(input("Enter product ID: "))
-                description.delete_description_by_product_id(product_id)
-                print(f"\nDeleted description: {product_id} successfully.")
+                new_description = input("Enter new product description: ")
+                description_module.update_description(product_id, new_description)
+                print(f"\nUpdated description: {product_id} ({new_description}) successfully.")
 
             elif choice == "3":
+                product_id = int(input("Enter product ID: "))
+                description_module.delete_description_by_product_id(product_id)
+                print(f"\nDeleted description: {product_id} successfully.")
+
+            elif choice == "4":
                 desc = Product()
                 product_id = int(input("Enter product ID: "))
                 description = desc.get_product_description_by_product_id(product_id)
@@ -303,7 +311,7 @@ if __name__ == "__main__":
                 else:
                     print("\nDescription not found.")
 
-            elif choice == "4":
+            elif choice == "5":
                 print("\nReturning to main menu...")
                 main_menu()
             else:
