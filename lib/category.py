@@ -17,6 +17,12 @@ class Category:
         CURSOR.execute(sql, (name, store_id, product_id))
         DATABASE.commit()
 
+# updating an existing category
+    @classmethod
+    def update_category_by_id(cls, id, name):
+        sql = "UPDATE category SET name = ? WHERE id = ?"
+        CURSOR.execute(sql, (name, id))
+        DATABASE.commit()
 # getting categories
     @classmethod
     def get_all_categories(cls):

@@ -5,10 +5,15 @@ class Store:
     def add_store(cls, name):
         CURSOR.execute("INSERT INTO store (name) VALUES (?)", (name,))
         DATABASE.commit()
+        # return CURSOR.lastrowid
+        store_id = CURSOR.lastrowid
+        CURSOR.execute("SELECT * FROM store WHERE id = ?", (store_id,))
+        return CURSOR.fetchone()
 
     @classmethod
     def update_store_by_id(cls, id, name):
         CURSOR.execute("UPDATE store SET name = ? WHERE id = ?", (name, id))
+        
         DATABASE.commit()
 
     @classmethod
@@ -35,7 +40,4 @@ class Store:
     @classmethod
     def get_all_stores(cls):
         CURSOR.execute("SELECT * FROM store")
-        stores = CURSOR.fetchall()
-        for store in stores:
-            print(store)
-        return stores
+        return CURSOR.fetchall()

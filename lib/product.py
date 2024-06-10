@@ -14,13 +14,13 @@ class Product:
 # updating an existing product
     @classmethod
     def update_product(cls, product_id, name=None, price=None, category=None, description=None):
-        updates = []
-        values = []
-        if name:
-            updates.append("name = ?")
+        updates = [] # list of columns to be updated
+        values = [] # list of values to be passed to the query
+        if name: # check if name is not None
+            updates.append("name = ?") 
             values.append(name)
-        if price:
-            updates.append("price = ?")
+        if price: 
+            updates.append("price = ?") # add price column to updates
             values.append(price)
         if category:
             updates.append("category = ?")
@@ -28,10 +28,10 @@ class Product:
         if description:
             updates.append("description = ?")
             values.append(description)
-        sql = "UPDATE product SET {} WHERE id = ?".format(", ".join(updates))
-        values.append(product_id)
-        CURSOR.execute(sql, tuple(values))
-        DATABASE.commit()
+        sql = "UPDATE product SET {} WHERE id = ?".format(", ".join(updates)) # formatting sql query
+        values.append(product_id) # adding product_id to values
+        CURSOR.execute(sql, tuple(values)) 
+        DATABASE.commit() 
 
     @classmethod
     def update_product_by_id(cls, id, name, price, category, description, store_id):
