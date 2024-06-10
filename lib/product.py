@@ -95,12 +95,6 @@ class Product:
         CURSOR.execute(sql, (peoduct_id,))
         return CURSOR.fetchone()
 
-    @classmethod
-    def get_products_by_store_id(cls, store_id):
-        sql = "SELECT * FROM product WHERE store_id = ?"
-        CURSOR.execute(sql, (store_id,))
-        return CURSOR.fetchall()
-
 # Delete operations
     @classmethod
     def delete_product_by_id(cls, id):

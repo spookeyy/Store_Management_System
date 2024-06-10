@@ -1,4 +1,6 @@
 import sys
+import time
+from lib.config import DATABASE
 from lib.store import Store
 from lib.category import Category
 from lib.product import Product
@@ -28,6 +30,9 @@ if __name__ == "__main__":
             elif choice == "4":
                 description_menu()
             elif choice == "5":
+                print("\t\nThank you for using the Store Management System!\n")
+                DATABASE.close()
+                time.sleep(1)
                 sys.exit()
             else:
                 print("Invalid choice. Please try again.")
@@ -44,11 +49,13 @@ if __name__ == "__main__":
             print("|        4. Get All Stores             |")
             print("|        5. Get Store by ID            |")
             print("|        6. Get Store by Name          |")
-            print("|        7. Main Menu                  |")
+            print("|        7. Get All products in Store  |")
+            print("|        8. Main Menu                  |")
             print("|======================================|")
 
             choice = input("Enter your choice: ")
             store = Store()
+            products_module = Product()
             if choice == "1":
                 name = input("Enter store name: ")
                 added_store = store.add_store(name)
@@ -95,7 +102,16 @@ if __name__ == "__main__":
                     print("\nStore not found.")
 
             elif choice == "7":
-                print("\nReturning to main menu...")
+                store_id = input("Enter store ID: ")
+                products = products_module.get_all_products_in_store(store_id)
+                if products:
+                    print(f"\nProducts in store {store_id}:\n")
+                    for product in products:
+                        print(f"ID: {product[0]}, Name: {product[1]}, Price: {product[2]}, Category: {product[3]}, Description: {product[4]}")
+                else:
+                    print("\nNo products found in this store.")
+
+            elif choice == "8":
                 main_menu()
             else:
                 print("Invalid choice. Please try again.")
@@ -284,6 +300,7 @@ if __name__ == "__main__":
 
             choice = input("Enter your choice: ")
             description_module = Description()
+            desc = Product()
 
             if choice == "1":
                 product_id = int(input("Enter product ID: "))
@@ -293,8 +310,11 @@ if __name__ == "__main__":
                 
             elif choice == "2":
                 product_id = int(input("Enter product ID: "))
+                if not desc.get_product_by_id(product_id):
+                    print("\nProduct not found. Please try again.")
+                    continue
                 new_description = input("Enter new product description: ")
-                description_module.update_description(product_id, new_description)
+                desc.update_product_description(product_id, new_description)
                 print(f"\nUpdated description: {product_id} ({new_description}) successfully.")
 
             elif choice == "3":
@@ -303,7 +323,6 @@ if __name__ == "__main__":
                 print(f"\nDeleted description: {product_id} successfully.")
 
             elif choice == "4":
-                desc = Product()
                 product_id = int(input("Enter product ID: "))
                 description = desc.get_product_description_by_product_id(product_id)
                 if description:
