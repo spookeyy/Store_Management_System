@@ -5,20 +5,20 @@ from lib.product import Product
 from lib.description import Description
 
 if __name__ == "__main__":
-    print("\tWelcome to the Store Management System!\n")
+    print("\n\tWelcome to the Store Management System!")
     # Main menu
     def main_menu():
         while True:
             print("\n")
-            print("|======================================|")
-            print("|==============MAIN MENU===============|")
-            print("|        1. Manage Stores              |")
-            print("|        2. Manage Categories          |")
-            print("|        3. Manage Products            |")
-            print("|        4. Manage Descriptions        |")
-            print("|        5. Quit Application           |")
-            print("|======================================|")
-            choice = input("Enter your choice: ")
+            print("\t|======================================|")
+            print("\t|==============MAIN MENU===============|")
+            print("\t|        1. Manage Stores              |")
+            print("\t|        2. Manage Categories          |")
+            print("\t|        3. Manage Products            |")
+            print("\t|        4. Manage Descriptions        |")
+            print("\t|        5. Quit Application           |")
+            print("\t|======================================|")
+            choice = input("\tEnter your choice: ")
             if choice == "1":
                 store_menu()
             elif choice == "2":
@@ -43,7 +43,7 @@ if __name__ == "__main__":
             print("|        3. Delete Store by ID         |")
             print("|        4. Get All Stores             |")
             print("|        5. Get Store by ID            |")
-            print("|        6. Get Store by Name            |")
+            print("|        6. Get Store by Name          |")
             print("|        7. Main Menu                  |")
             print("|======================================|")
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
                 store_id = int(input("Enter store ID: "))
                 name = input("Enter store name: ")
                 store.update_store_by_id(store_id, name)
-                print(f"Updated store: {store_id} ({name}) successfully.")
+                print(f"\nUpdated store: {store_id} ({name}) successfully.")
 
             elif choice == "3":
                 store_id = int(input("Enter store ID: "))
@@ -70,7 +70,7 @@ if __name__ == "__main__":
                     print("Deletion canceled.")
                     continue
                 store.delete_store_by_id(store_id)
-                print(f"Deleted store: {store_id} ({name}) successfully.")
+                print(f"\nDeleted store: {store_id} successfully.")
 
             elif choice == "4":
                 stores = store.get_all_stores()
@@ -82,20 +82,20 @@ if __name__ == "__main__":
                 store_id = input("Enter store ID: ")
                 store = store.get_store_by_id(store_id)
                 if store:
-                    print(f"Store found: {store}")
+                    print(f"\nStore found: {store}")
                 else:
-                    print("Store not found.")
+                    print("\nStore not found.")
 
             elif choice == "6":
                 store_name = input("Enter store name: ")
                 store = store.get_store_by_name(store_name)
                 if store:
-                    print(f"Store found: {store}")
+                    print(f"\nStore found: {store}")
                 else:
-                    print("Store not found.")
+                    print("\nStore not found.")
 
             elif choice == "7":
-                print("Returning to main menu...")
+                print("\nReturning to main menu...")
                 main_menu()
             else:
                 print("Invalid choice. Please try again.")
@@ -119,38 +119,39 @@ if __name__ == "__main__":
             category = Category()
             if choice == "1":
                 name = input("Enter category name: ")
-                added_category = category.add_category(name)
+                store_id = int(input("Enter store ID: "))
+                added_category = category.add_category(name, store_id)
                 if added_category:
-                    print(f"Added category: {added_category}")
+                    print(f"\nAdded category: {added_category}" + " to store: " + str(store_id))
                 else:
-                    print("Failed to add category.")
+                    print("\nFailed to add category.")
 
             elif choice == "2":
                 category_id = int(input("Enter category ID: "))
                 name = input("Enter category name: ")
                 category.update_category_by_id(category_id, name)
-                print(f"Updated category: {category_id} ({name}) successfully.")
+                print(f"\nUpdated category: {category_id} ({name}) successfully.")
 
             elif choice == "3":
                 category_id = int(input("Enter category ID: "))
                 confirm = input("Are you sure you want to delete this category? (y/n): ") # confirm deletion
                 if confirm.lower() != "y":
-                    print("Deletion canceled.")
+                    print("\nDeletion canceled.")
                     continue
                 category.delete_category_by_id(category_id)
-                print(f"Deleted category: {category_id} ({name}) successfully.")
+                print(f"\nDeleted category: {category_id} ({name}) successfully.")
 
             elif choice == "4":
                 category_name = input("Enter category name: ")
                 category = category.get_category_by_name(category_name)
                 if category:
-                    print(f"Category found: {category}")
+                    print(f"\nCategory found: {category}")
                 else:
-                    print("Category not found.")
+                    print("\nCategory not found.")
 
             elif choice == "5":
                 categories = category.get_all_categories()
-                print("|==========All Categories==========|\n")
+                print("\n|==========All Categories==========|\n")
                 for category in categories:
                     print(f"| ID: {category[0]}, Name: {category[1]}") # print all categories (id, category)
 
@@ -158,12 +159,12 @@ if __name__ == "__main__":
                 category_id = input("Enter category ID: ")
                 category = category.get_category_by_id(category_id)
                 if category:
-                    print(f"Category found: {category}")
+                    print(f"\nCategory found: {category}")
                 else:
-                    print("Category not found.")
+                    print("\nCategory not found.")
 
             elif choice == "7":
-                print("Returning to main menu...")
+                print("\nReturning to main menu...")
                 main_menu()
             else:
                 print("Invalid choice. Please try again.")
@@ -195,9 +196,9 @@ if __name__ == "__main__":
                 store_id = int(input("Enter store ID: "))
                 added_product = product.add_product(name, price, category, description, store_id)
                 if added_product:
-                    print(f"Added product: {added_product}")
+                    print(f"\nAdded product: {added_product}")
                 else:
-                    print("Failed to add product.")
+                    print("\nFailed to add product.")
 
             elif choice == "2":
                 product_id = int(input("Enter product ID: "))
@@ -207,42 +208,42 @@ if __name__ == "__main__":
                 description = input("Enter product description: ")
                 store_id = int(input("Enter store ID: "))
                 product.update_product_by_id(product_id, name, price, category, description, store_id)
-                print(f"Updated product: {product_id} ({name}) successfully.")
+                print(f"\nUpdated product: {product_id} ({name}) successfully.")
 
             elif choice == "3":
                 product_id = int(input("Enter product ID: "))
                 new_description = input("Enter new product description: ")
                 product.update_product_description(product_id, new_description)
-                print(f"Updated product description: {product_id} ({new_description}) successfully.")
+                print(f"\nUpdated product description: {product_id} ({new_description}) successfully.")
 
             elif choice == "4":
                 product_id = int(input("Enter product ID: "))
                 confirm = input("Are you sure you want to delete this product? (y/n): ") # confirm deletion
                 if confirm.lower() != "y":
-                    print("Deletion canceled.")
+                    print("\nDeletion canceled.")
                     continue
                 product.delete_product_by_id(product_id)
-                print(f"Deleted product: {product_id} ({name}) successfully.")
+                print(f"\nDeleted product: {product_id} ({name}) successfully.")
 
             elif choice == "5":
                 product_name = input("Enter product name: ")
                 product = product.get_product_by_name(product_name)
                 if product:
-                    print(f"Product found: {product}")
+                    print(f"\nProduct found: {product}")
                 else:
-                    print("Product not found.")
+                    print("\nProduct not found.")
 
             elif choice == "6":
                 store_id = int(input("Enter store ID: "))
                 products = product.get_all_products_in_store(store_id)
-                print(f"Products in store {store_id}:")
+                print(f"\nProducts in store {store_id}:")
                 for product in products:
                     print(f"ID: {product[0]}, Name: {product[1]}, Price: {product[2]}, Category: {product[3]}, Description: {product[4]}, Store ID: {product[5]}")
 
             elif choice == "7":
                 category = input("Enter product category: ")
                 products = product.get_products_by_category(category)
-                print(f"Products in category {category}:")
+                print(f"\nProducts in category {category}:")
                 for product in products:
                     print(f"ID: {product[0]}, Name: {product[1]}, Price: {product[2]}, Category: {product[3]}, Description: {product[4]}, Store ID: {product[5]}")
 
@@ -250,12 +251,12 @@ if __name__ == "__main__":
                 product_id = int(input("Enter product ID: "))
                 product = product.get_product_by_id(product_id)
                 if product:
-                    print(f"Product found: {product}")
+                    print(f"\nProduct found: {product}")
                 else:
-                    print("Product not found.")
+                    print("\nProduct not found.")
 
             elif choice == "9":
-                print("Returning to main menu...")
+                print("\nReturning to main menu...")
                 main_menu()
             else:
                 print("Invalid choice. Please try again.")
@@ -279,23 +280,23 @@ if __name__ == "__main__":
                 product_id = int(input("Enter product ID: "))
                 new_description = input("Enter new product description: ")
                 description.update_description(product_id, new_description)
-                print(f"Updated description: {product_id} ({new_description}) successfully.")
+                print(f"\nUpdated description: {product_id} ({new_description}) successfully.")
 
             elif choice == "2":
                 product_id = int(input("Enter product ID: "))
                 description.delete_description_by_product_id(product_id)
-                print(f"Deleted description: {product_id} successfully.")
+                print(f"\nDeleted description: {product_id} successfully.")
 
             elif choice == "3":
                 product_id = int(input("Enter product ID: "))
                 description = description.get_description_by_product_id(product_id)
                 if description:
-                    print(f"Description found: {description}")
+                    print(f"\nDescription found: {description}")
                 else:
-                    print("Description not found.")
+                    print("\nDescription not found.")
 
             elif choice == "4":
-                print("Returning to main menu...")
+                print("\nReturning to main menu...")
                 main_menu()
             else:
                 print("Invalid choice. Please try again.")
