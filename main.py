@@ -2,6 +2,7 @@ from lib.store import Store
 import lib.config as config
 from lib.category import Category
 from lib.product import Product
+from lib.description import Description
 
 print("Initializing database...\n")
 print("Dropping tables...")

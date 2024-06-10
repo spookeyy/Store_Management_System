@@ -26,6 +26,13 @@ def create_tables():
         FOREIGN KEY (store_id) REFERENCES store(id))"""
     CURSOR.execute(sql3)
 
+    sql4 = """CREATE TABLE IF NOT EXISTS description(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_id INTEGER NOT NULL,
+        description VARCHAR(100) NOT NULL,
+        FOREIGN KEY (product_id) REFERENCES product(id))"""
+    CURSOR.execute(sql4)
+
     DATABASE.commit()
 
 def drop_tables():
@@ -37,6 +44,9 @@ def drop_tables():
 
     sql3 = """DROP TABLE IF EXISTS category"""
     CURSOR.execute(sql3)
+
+    sql4 = """DROP TABLE IF EXISTS description"""
+    CURSOR.execute(sql4)
 
     DATABASE.commit()
 
