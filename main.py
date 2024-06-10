@@ -109,7 +109,7 @@ if __name__ == "__main__":
             print("|        1. Add Category               |")
             print("|        2. Update Category by ID      |")
             print("|        3. Delete Category by ID      |")
-            print("|        4. Delete category by name    |")
+            print("|        4. Get category by name       |")
             print("|        5. Get All Categories         |")
             print("|        6. Get Category by ID         |")
             print("|        7. Main Menu                  |")

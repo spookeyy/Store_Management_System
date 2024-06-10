@@ -16,6 +16,9 @@ class Category:
         sql = "INSERT INTO category (name, store_id) VALUES (?, ?)"
         CURSOR.execute(sql, (name, store_id))
         DATABASE.commit()
+        category_id = CURSOR.lastrowid
+        CURSOR.execute("SELECT * FROM category WHERE id = ?", (category_id,))
+        return CURSOR.fetchone()
 
 # updating an existing category
     @classmethod
