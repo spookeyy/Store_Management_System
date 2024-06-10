@@ -1,6 +1,6 @@
 import sys
 import time
-from lib.config import DATABASE
+from lib.config import DATABASE as DB
 from lib.store import Store
 from lib.category import Category
 from lib.product import Product
@@ -31,7 +31,7 @@ if __name__ == "__main__":
                 description_menu()
             elif choice == "5":
                 print("\t\nThank you for using the Store Management System!\n")
-                DATABASE.close()
+                DB.close()
                 time.sleep(1)
                 sys.exit()
             else:
