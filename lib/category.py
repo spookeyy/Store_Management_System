@@ -12,9 +12,9 @@ class Category:
         DATABASE.commit()
 
     @classmethod
-    def add_category(cls, name, store_id, product_id):
-        sql = "INSERT INTO category (name, store_id, product_id) VALUES (?, ?, ?)"
-        CURSOR.execute(sql, (name, store_id, product_id))
+    def add_category(cls, name, store_id):
+        sql = "INSERT INTO category (name, store_id) VALUES (?, ?)"
+        CURSOR.execute(sql, (name, store_id))
         DATABASE.commit()
 
 # updating an existing category
