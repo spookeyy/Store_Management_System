@@ -9,14 +9,22 @@ This is a command-line interface (CLI) application written in Python for managin
 - Fetch store details by ID
 - Delete a store
 - Add a product to a store
-- Delete a product
+- Delete a product from a store
 - Update a product (name, price, category, description)
 - Count the number of products in a store
 - Add a category to a product
 - Add a description to a product
 - Delete a category
 - View all products
-- Fetch products by user ID
+- Fetch products by category
+- Fetch products by store
+- Delete a product
+- Fetch all products
+- Fetch all stores
+- Fetch all categories
+- Update a category
+- Update a product name
+- Update a product price
 - Update a product description
 - Fetch all product details by product ID
 - Fetch all products in a store by store ID
@@ -41,11 +49,7 @@ cd store-mgt-CLI-app
 python -m venv venv
 source venv/bin/activate # On Windows, use: source venv/Scripts/activate
 ```
-4. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
-5. Run the application:
+4. Run the application:
 ```bash
 python3 main.py
 ```
@@ -64,7 +68,6 @@ python3 main.py
     - main.py
     - README.md
     - readonly.py
-    - requirements.txt
 
 - `data/database.db`: SQLite database file
 - `lib/config.py`: Database configuration and table creation/deletion
@@ -74,7 +77,6 @@ python3 main.py
 - `lib/description.py`: Functions for managing product descriptions
 - `main.py`: Entry point of the application
 - `README.md`: Project README
-- `requirements.txt`: List of required dependencies
 
 ## Dependencies
 
