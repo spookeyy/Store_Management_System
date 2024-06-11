@@ -66,6 +66,9 @@ if __name__ == "__main__":
 
             elif choice == "2":
                 store_id = int(input("Enter store ID: "))
+                if store_id is not isinstance(int):
+                    print("input an integer")
+                    continue
                 name = input("Enter store name: ")
                 store.update_store_by_id(store_id, name)
                 print(f"\nUpdated store: {store_id} ({name}) successfully.")
