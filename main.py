@@ -7,20 +7,20 @@ from lib.product import Product
 from lib.description import Description
 
 if __name__ == "__main__":
-    print("\n\tWelcome to the Store Management System!")
+    print("\n\t\t\t\t Welcome to the Store Management System!")
     # Main menu
     def main_menu():
         while True:
             print("\n")
-            print("\t|======================================|")
-            print("\t|==============MAIN MENU===============|")
-            print("\t|        1. Manage Stores              |")
-            print("\t|        2. Manage Categories          |")
-            print("\t|        3. Manage Products            |")
-            print("\t|        4. Manage Descriptions        |")
-            print("\t|        5. Quit Application           |")
-            print("\t|======================================|")
-            choice = input("\tEnter your choice: ")
+            print("\t\t\t\t|======================================|")
+            print("\t\t\t\t|==============MAIN MENU===============|")
+            print("\t\t\t\t|        1. Manage Stores              |")
+            print("\t\t\t\t|        2. Manage Categories          |")
+            print("\t\t\t\t|        3. Manage Products            |")
+            print("\t\t\t\t|        4. Manage Descriptions        |")
+            print("\t\t\t\t|        5. Quit Application           |")
+            print("\t\t\t\t|======================================|")
+            choice = input("\t\t\t\tEnter your choice: ")
             if choice == "1":
                 store_menu()
             elif choice == "2":
@@ -30,12 +30,12 @@ if __name__ == "__main__":
             elif choice == "4":
                 description_menu()
             elif choice == "5":
-                print("\t\nThank you for using the Store Management System!\n")
+                print("\t\t\nThank you for using the Store Management System!\n")
                 DB.close()
                 time.sleep(1)
                 sys.exit()
             else:
-                print("Invalid choice. Please try again.")
+                print("\t\t\nInvalid choice. Please try again.")
 
     # Stores operations
     def store_menu():
@@ -68,7 +68,6 @@ if __name__ == "__main__":
                 store_id = int(input("Enter store ID: "))
                 if store_id is not isinstance(int):
                     print("input an integer")
-                    continue
                 name = input("Enter store name: ")
                 store.update_store_by_id(store_id, name)
                 print(f"\nUpdated store: {store_id} ({name}) successfully.")
