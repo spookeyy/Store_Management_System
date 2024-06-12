@@ -118,3 +118,10 @@ class Product:
         sql = "DELETE FROM product WHERE name = ?"
         CURSOR.execute(sql, (name,))
         DATABASE.commit()
+
+# creating 5 sample products
+# product1 = Product.add_product("Milk", 99, "Dairy", "Fresh milk", 1)
+# product2 = Product.add_product("Eggs", 12, "Dairy", "Fresh eggs", 1)
+# product3 = Product.add_product("Apples", 30, "Produce", "Fresh apples", 1)
+# product4 = Product.add_product("Bananas", 20, "Produce", "Fresh bananas", 1)
+# product5 = Product.add_product("Cheese", 40, "Dairy", "Fresh cheese", 1)

@@ -9,43 +9,6 @@ from lib.description import Description
 
 if __name__ == "__main__":
     print("\n\t\t\t\t WELCOME TO STORE MANAGEMENT SYSTEM!!")
-
-
-    # def admin_login():
-    #     print("\n")
-    #     print("\n\t\t\t\t Log in to admin account!\n")
-    #     username = input("\t\t\t\t Enter username: ")
-    #     password = input("\t\t\t\t Enter password: ")
-    #     admin = Admin()
-    #     login_status = admin.login(username, password)
-    #     if login_status:
-    #         print("\n\t\t\t\tLogin successful!")
-    #         time.sleep(1)
-    #         main_menu()
-    #     else:
-    #         print("\n\t\t\t\tLogin failed. Please try again.")
-    #         time.sleep(1)
-    #         admin_login()
-
-    # def admin_menu():
-    #     print("\n")
-    #     print("\t\t\t\t|======================================|")
-    #     print("\t\t\t\t|==============ADMIN MENU==============|")
-    #     print("\t\t\t\t|        1. Log in to admin account    |")
-    #     print("\t\t\t\t|        2. Exit                       |")
-    #     print("\t\t\t\t|======================================|")
-
-    #     choice = input("\t\t\t\tEnter your choice: ")
-    #     if choice == "1":
-    #         admin_login()
-    #     elif choice == "2":
-    #         sys.exit()
-    #     else:
-    #         print("\n\t\t\t\tInvalid choice. Please try again.")
-    #         time.sleep(2)
-    #         admin_menu()
-    # # while True:
-    # admin_menu()
     # Stores operations
     def store_menu():
         while True:
@@ -353,7 +316,7 @@ if __name__ == "__main__":
             else:
                 print("Invalid choice. Please try again.")
 
-
+    # main menu
     def main_menu():
         while True:
             print("\n")
