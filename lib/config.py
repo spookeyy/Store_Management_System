@@ -33,6 +33,12 @@ def create_tables():
         FOREIGN KEY (product_id) REFERENCES product(id))"""
     CURSOR.execute(sql4)
 
+    sql5 = """CREATE TABLE IF NOT EXISTS admin(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username VARCHAR(20) NOT NULL,
+        password VARCHAR(20) NOT NULL)"""
+    CURSOR.execute(sql5)
+
     DATABASE.commit()
 
 def drop_tables():

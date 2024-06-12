@@ -87,7 +87,7 @@ class Product:
     def get_products_by_category(cls, category):
         sql = "SELECT * FROM product WHERE category = ?"
         CURSOR.execute(sql, (category,))
-        return CURSOR.fetchall()
+        return CURSOR.fetchall() 
 
     @classmethod
     def get_product_details_by_id(cls, peoduct_id):

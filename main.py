@@ -1,5 +1,6 @@
 import sys
 import time
+from lib.admin import Admin
 from lib.config import DATABASE as DB
 from lib.store import Store
 from lib.category import Category
@@ -7,36 +8,44 @@ from lib.product import Product
 from lib.description import Description
 
 if __name__ == "__main__":
-    print("\n\t\t\t\t Welcome to the Store Management System!")
-    # Main menu
-    def main_menu():
-        while True:
-            print("\n")
-            print("\t\t\t\t|======================================|")
-            print("\t\t\t\t|==============MAIN MENU===============|")
-            print("\t\t\t\t|        1. Manage Stores              |")
-            print("\t\t\t\t|        2. Manage Categories          |")
-            print("\t\t\t\t|        3. Manage Products            |")
-            print("\t\t\t\t|        4. Manage Descriptions        |")
-            print("\t\t\t\t|        5. Quit Application           |")
-            print("\t\t\t\t|======================================|")
-            choice = input("\t\t\t\tEnter your choice: ")
-            if choice == "1":
-                store_menu()
-            elif choice == "2":
-                category_menu()
-            elif choice == "3":
-                product_menu()
-            elif choice == "4":
-                description_menu()
-            elif choice == "5":
-                print("\t\t\nThank you for using the Store Management System!\n")
-                DB.close()
-                time.sleep(1)
-                sys.exit()
-            else:
-                print("\t\t\nInvalid choice. Please try again.")
+    print("\n\t\t\t\t WELCOME TO STORE MANAGEMENT SYSTEM!!")
 
+
+    # def admin_login():
+    #     print("\n")
+    #     print("\n\t\t\t\t Log in to admin account!\n")
+    #     username = input("\t\t\t\t Enter username: ")
+    #     password = input("\t\t\t\t Enter password: ")
+    #     admin = Admin()
+    #     login_status = admin.login(username, password)
+    #     if login_status:
+    #         print("\n\t\t\t\tLogin successful!")
+    #         time.sleep(1)
+    #         main_menu()
+    #     else:
+    #         print("\n\t\t\t\tLogin failed. Please try again.")
+    #         time.sleep(1)
+    #         admin_login()
+
+    # def admin_menu():
+    #     print("\n")
+    #     print("\t\t\t\t|======================================|")
+    #     print("\t\t\t\t|==============ADMIN MENU==============|")
+    #     print("\t\t\t\t|        1. Log in to admin account    |")
+    #     print("\t\t\t\t|        2. Exit                       |")
+    #     print("\t\t\t\t|======================================|")
+
+    #     choice = input("\t\t\t\tEnter your choice: ")
+    #     if choice == "1":
+    #         admin_login()
+    #     elif choice == "2":
+    #         sys.exit()
+    #     else:
+    #         print("\n\t\t\t\tInvalid choice. Please try again.")
+    #         time.sleep(2)
+    #         admin_menu()
+    # # while True:
+    # admin_menu()
     # Stores operations
     def store_menu():
         while True:
@@ -66,8 +75,9 @@ if __name__ == "__main__":
 
             elif choice == "2":
                 store_id = int(input("Enter store ID: "))
-                if store_id is not isinstance(int):
-                    print("input an integer")
+                if not store.get_store_by_id(store_id):
+                    print("\nStore not found. Please try again.")
+                    continue
                 name = input("Enter store name: ")
                 store.update_store_by_id(store_id, name)
                 print(f"\nUpdated store: {store_id} ({name}) successfully.")
@@ -153,11 +163,12 @@ if __name__ == "__main__":
             elif choice == "3":
                 category_id = int(input("Enter category ID: "))
                 confirm = input("Are you sure you want to delete this category? (y/n): ") # confirm deletion
+                category_name = category.get_category_by_id(category_id)[1]
                 if confirm.lower() != "y":
                     print("\nDeletion canceled.")
                     continue
                 category.delete_category_by_id(category_id)
-                print(f"\nDeleted category: {category_id} ({name}) successfully.")
+                print(f"\nDeleted category: {category_id} ({category_name}) successfully.")
 
             elif choice == "4":
                 category_name = input("Enter category name: ")
@@ -259,10 +270,14 @@ if __name__ == "__main__":
                 for product in products:
                     print(f"ID: {product[0]}, Name: {product[1]}, Price: {product[2]}, Category: {product[3]}, Description: {product[4]}, Store ID: {product[5]}")
 
+# TODO: implement get products by category operations
             elif choice == "7":
                 category = input("Enter product category: ")
-                if category not in category_module.get_all_categories():
-                    print("\nCategory not found. Please try again.")
+                category_name = category_module.get_category_by_name(str.capitalize(category))
+                if category_name:
+                    category = category_name[0]
+                else:
+                    print("\nCategory not found.")
                     continue
                 products = product.get_products_by_category(category)
                 if not products:
@@ -338,4 +353,67 @@ if __name__ == "__main__":
             else:
                 print("Invalid choice. Please try again.")
 
-    main_menu()
+
+    def main_menu():
+        while True:
+            print("\n")
+            print("\t\t\t\t|======================================|")
+            print("\t\t\t\t|==============MAIN MENU===============|")
+            print("\t\t\t\t|        1. Manage Stores              |")
+            print("\t\t\t\t|        2. Manage Categories          |")
+            print("\t\t\t\t|        3. Manage Products            |")
+            print("\t\t\t\t|        4. Manage Descriptions        |")
+            print("\t\t\t\t|        5. Quit Application           |")
+            print("\t\t\t\t|======================================|")
+            choice = input("\t\t\t\tEnter your choice: ")
+            if choice == "1":
+                store_menu()
+            elif choice == "2":
+                category_menu()
+            elif choice == "3":
+                product_menu()
+            elif choice == "4":
+                description_menu()
+            elif choice == "5":
+                print("\t\t\nThank you for using the Store Management System!\n")
+                DB.close()
+                time.sleep(1)
+                sys.exit()
+            else:
+                print("\t\t\nInvalid choice. Please try again.")
+
+    def admin_login():
+        print("\n")
+        print("\n\t\t\t\t Log in to admin account!\n")
+        username = input("\t\t\t\t Enter username: ")
+        password = input("\t\t\t\t Enter password: ")
+        admin = Admin()
+        login_status = admin.login(username, password)
+        if login_status:
+            print("\n\t\t\t\tLogin successful!")
+            time.sleep(1)
+            main_menu()
+        else:
+            print("\n\t\t\t\tLogin failed. Please try again.")
+            time.sleep(1)
+            admin_login()
+
+    def admin_menu():
+        print("\n")
+        print("\t\t\t\t|======================================|")
+        print("\t\t\t\t|==============ADMIN MENU==============|")
+        print("\t\t\t\t|        1. Log in to admin account    |")
+        print("\t\t\t\t|        2. Exit                       |")
+        print("\t\t\t\t|======================================|")
+
+        choice = input("\t\t\t\tEnter your choice: ")
+        if choice == "1":
+            admin_login()
+        elif choice == "2":
+            sys.exit()
+        else:
+            print("\n\t\t\t\tInvalid choice. Please try again.")
+            time.sleep(2)
+            admin_menu()
+
+    admin_menu()
