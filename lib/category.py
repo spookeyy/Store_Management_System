@@ -1,6 +1,6 @@
 # category module
 
-from lib.config import DATABASE, CURSOR
+from config import DATABASE, CURSOR
 
 class Category:
 
@@ -93,3 +93,10 @@ class Category:
     #     sql = "DELETE FROM category WHERE store_id = ?"
     #     CURSOR.execute(sql, (store_id,))
     #     DATABASE.commit()
+
+# # creating 5 sample categories
+# category1 = Category.add_category("Grocery", 1)
+# category2 = Category.add_category("Fruits", 1)
+# category3 = Category.add_category("Vegetables", 1)
+# category4 = Category.add_category("Meat", 1)
+# category5 = Category.add_category("Dairy", 1)
