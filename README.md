@@ -83,10 +83,9 @@ then uncomment the `import pyttsx3` line(3) and `speak()` function in the `main.
     - LICENSE
     - main.py
     - README.md
-    - readonly.py
 
 - `data/database.db`: SQLite database file
-- `lib/admin.py`: Functions for managing admins
+- `lib/admin.py`: Functions for managing admin accounts
 - `lib/config.py`: Database configuration and table creation/deletion
 - `lib/store.py`: Functions for managing stores
 - `lib/product.py`: Functions for managing products
