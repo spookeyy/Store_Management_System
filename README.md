@@ -13,6 +13,8 @@ This is a command-line interface (CLI) application written in Python for managin
 - [Author](#author)
 - [Version](#version)
 
+## Login image
+![Login image](./login.png)
 ## Features
 - Create a new admin
 - Login to admin account
