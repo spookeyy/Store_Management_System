@@ -16,6 +16,12 @@ class Admin:
         CURSOR.execute("SELECT * FROM admin WHERE id = ?", (admin_id,))
         return CURSOR.fetchone()
     
+    @classmethod
+    def update_admin(cls, id, username, password):
+        sql = "UPDATE admin SET username = ?, password = ? WHERE id = ?"
+        CURSOR.execute(sql, (username, password, id))
+        DATABASE.commit()
+    
 
 admin = Admin()
 # admin.create_admin("admin", "admin")
