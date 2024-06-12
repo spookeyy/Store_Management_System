@@ -54,6 +54,16 @@ source venv/bin/activate # On Windows, use: source venv/Scripts/activate
 ```bash
 python3 main.py
 ```
+5. (Optional) Deactivate the virtual environment:
+```bash
+deactivate
+```
+6. If you want the system to speak, install pyttsx3:
+```bash
+pip install pyttsx3
+```
+then uncomment the `import pyttsx3` line(3) and `speak()` function in the `main.py` file at line (11-14)
+
 ## Admin Account credentials
 - Username: `admin`
 - Password: `admin`

@@ -1,5 +1,6 @@
 import sys
 import time
+# import pyttsx3
 from lib.admin import Admin
 from lib.config import DATABASE as DB
 from lib.store import Store
@@ -7,8 +8,15 @@ from lib.category import Category
 from lib.product import Product
 from lib.description import Description
 
+# engine = pyttsx3.init()
+# def speak(text):
+#     engine.say(text)
+#     engine.runAndWait()
+
 if __name__ == "__main__":
+    admin = Admin()
     print("\n\t\t\t\t WELCOME TO STORE MANAGEMENT SYSTEM!!")
+    # speak("WELCOME TO STORE MANAGEMENT SYSTEM")
     # Stores operations
     def store_menu():
         while True:
@@ -323,7 +331,8 @@ if __name__ == "__main__":
             print("\t\t\t\t|        2. Manage Categories          |")
             print("\t\t\t\t|        3. Manage Products            |")
             print("\t\t\t\t|        4. Manage Descriptions        |")
-            print("\t\t\t\t|        5. Quit Application           |")
+            print("\t\t\t\t|        5. Change Password            |")
+            print("\t\t\t\t|        6. Quit Application           |")
             print("\t\t\t\t|======================================|")
             choice = input("\t\t\t\tEnter your choice: ")
             if choice == "1":
@@ -335,7 +344,16 @@ if __name__ == "__main__":
             elif choice == "4":
                 description_menu()
             elif choice == "5":
-                print("\t\t\nThank you for using the Store Management System!\n")
+                username = input("\n\t\t\t\tEnter your username: ")
+                password = input("\t\t\t\tEnter your new password: ")
+                # admin = Admin()
+                admin.update_admin(username, password)
+                print("\n\t\t\t\tPassword changed successfully.")
+                print("\n\t\t\t\tReturning to main menu...")
+                time.sleep(1)
+                main_menu()
+            elif choice == "6":
+                print("\n\t\tThank you for using the Store Management System!\n")
                 DB.close()
                 time.sleep(1)
                 sys.exit()
@@ -347,7 +365,6 @@ if __name__ == "__main__":
         print("\n\t\t\t\t Log in to admin account!\n")
         username = input("\t\t\t\t Enter username: ")
         password = input("\t\t\t\t Enter password: ")
-        admin = Admin()
         login_status = admin.login(username, password)
         if login_status:
             print("\n\t\t\t\tLogin successful!")
@@ -370,6 +387,9 @@ if __name__ == "__main__":
         if choice == "1":
             admin_login()
         elif choice == "2":
+            print("\n\t\t\t\tQuitting application...\n")
+            DB.close()
+            time.sleep(1)
             sys.exit()
         else:
             print("\n\t\t\t\tInvalid choice. Please try again.")
