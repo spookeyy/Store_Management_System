@@ -3,7 +3,8 @@
 This is a command-line interface (CLI) application written in Python for managing stores, products, and categories. It allows users to create and manage stores, add and update products, assign categories to products, and perform various other operations.
 
 ## Features
-
+- Create a new admin
+- Login to admin account
 - Create a new store
 - Update an existing store
 - Fetch store details by ID
@@ -60,21 +61,25 @@ python3 main.py
     - data/
         - database.db
     - lib/
+        - admin.py
         - category.py
         - config.py
         - description.py
         - product.py
         - store.py
+    - LICENSE
     - main.py
     - README.md
     - readonly.py
 
 - `data/database.db`: SQLite database file
+- `lib/admin.py`: Functions for managing admins
 - `lib/config.py`: Database configuration and table creation/deletion
 - `lib/store.py`: Functions for managing stores
 - `lib/product.py`: Functions for managing products
 - `lib/category.py`: Functions for managing categories
-- `lib/description.py`: Functions for managing product descriptions
+- `lib/description.py`: Functions for managing product description
+- `LICENSE`: MIT License
 - `main.py`: Entry point of the application
 - `README.md`: Project README
 
