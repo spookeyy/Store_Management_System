@@ -1,4 +1,5 @@
 # product desription module
+# import faker 
 from lib.config import DATABASE, CURSOR
 
 class Description:
@@ -40,3 +41,11 @@ class Description:
         sql = "DELETE FROM description WHERE id = ?"
         CURSOR.execute(sql, (id,))
         DATABASE.commit()
+
+# sample description
+description1 = Description.add_description(1, "description 1")
+description2 = Description.add_description(2, "description 2")
+description3 = Description.add_description(3, "description 3")
+# fake = faker.Faker()
+# description1 = fake.text()
+# description2 = fake.text()
