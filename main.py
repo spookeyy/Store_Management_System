@@ -233,14 +233,11 @@ if __name__ == "__main__":
                 for product in products:
                     print(f"ID: {product[0]}, Name: {product[1]}, Price: {product[2]}, Category: {product[3]}, Description: {product[4]}, Store ID: {product[5]}")
 
-# TODO: implement get products by category operations
             elif choice == "7":
                 category = input("Enter product category: ")
-                category_name = category_module.get_category_by_name(str.capitalize(category))
-                if category_name:
-                    category = category_name[0]
-                else:
-                    print("\nCategory not found.")
+                category_name = category_module.get_category_by_name(category)
+                if not category_name:
+                    print(f"\nCategory {category} not found.")
                     continue
                 products = product.get_products_by_category(category)
                 if not products:
