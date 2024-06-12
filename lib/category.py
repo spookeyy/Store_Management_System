@@ -1,6 +1,6 @@
 # category module
 
-from config import DATABASE, CURSOR
+from lib.config import DATABASE, CURSOR
 
 class Category:
 
