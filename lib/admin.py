@@ -17,9 +17,9 @@ class Admin:
         return CURSOR.fetchone()
     
     @classmethod
-    def update_admin(cls, id, username, password):
-        sql = "UPDATE admin SET username = ?, password = ? WHERE id = ?"
-        CURSOR.execute(sql, (username, password, id))
+    def update_admin(cls,username, password):
+        sql = "UPDATE admin SET username = ?, password = ? WHERE id = 1"
+        CURSOR.execute(sql, (username, password))
         DATABASE.commit()
     
 
