@@ -54,6 +54,9 @@ source venv/bin/activate # On Windows, use: source venv/Scripts/activate
 ```bash
 python3 main.py
 ```
+## Admin Account credentials
+- Username: `admin`
+- Password: `admin`
 
 ## Project Structure
 
