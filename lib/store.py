@@ -1,4 +1,4 @@
-from lib.config import DATABASE, CURSOR
+from config import DATABASE, CURSOR
 
 class Store:
     @classmethod
@@ -41,3 +41,11 @@ class Store:
     def get_all_stores(cls):
         CURSOR.execute("SELECT * FROM store")
         return CURSOR.fetchall()
+
+
+# creating 5 sample stores
+# store1 = Store.add_store("Walmart")
+# store2 = Store.add_store("Target")
+# store3 = Store.add_store("Costco")
+# store4 = Store.add_store("Amazon")
+# store5 = Store.add_store("Best Buy")
