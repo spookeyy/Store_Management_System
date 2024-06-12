@@ -94,6 +94,7 @@ then uncomment the `import pyttsx3` line(3) and `speak()` function in the `main.
         - product.py
         - store.py
     - LICENSE
+    - login.png
     - main.py
     - README.md
 
