@@ -2,6 +2,17 @@
 
 This is a command-line interface (CLI) application written in Python for managing stores, products, and categories. It allows users to create and manage stores, add and update products, assign categories to products, and perform various other operations.
 
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Version](#version)
+
 ## Features
 - Create a new admin
 - Login to admin account
