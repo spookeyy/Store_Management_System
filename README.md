@@ -86,6 +86,7 @@ then uncomment the `import pyttsx3` line(3) and `speak()` function in the `main.
 - store_mgt_CLI_app
     - data/
         - database.db
+        - login.png
     - lib/
         - admin.py
         - category.py
@@ -94,7 +95,6 @@ then uncomment the `import pyttsx3` line(3) and `speak()` function in the `main.
         - product.py
         - store.py
     - LICENSE
-    - login.png
     - main.py
     - README.md
 
