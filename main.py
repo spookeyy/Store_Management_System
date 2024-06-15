@@ -354,6 +354,7 @@ if __name__ == "__main__":
                 main_menu()
             elif choice == "6":
                 print("\n\t\tThank you for using the Store Management System!\n")
+                # speak("Thank you for using the Store Management System")
                 DB.close()
                 time.sleep(1)
                 sys.exit()
